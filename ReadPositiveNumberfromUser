@@ -1,0 +1,12 @@
+int ReadPositiveNumber()
+{
+    int Number;
+    cout << " Please Enter Positive Number \n";
+    cin >> Number;
+    while (Number<0)
+    {
+        cout << "Please Enter Only Positive Number \n";
+        cin >> Number;
+    }
+    return Number;
+}
