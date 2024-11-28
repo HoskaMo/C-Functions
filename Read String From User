@@ -1,0 +1,8 @@
+string ReadNameFromUser()
+{
+    string Name;
+    cout << " Kindly Enter your full name \n";
+    getline(cin, Name);
+    return Name;
+
+}
