@@ -1,0 +1,101 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <iomanip>
+
+using namespace std;
+
+int ReadPositiveNumber()
+{
+    int Number;
+    cout << " Please Enter Positive Number \n";
+    cin >> Number;
+    while (Number < 0)
+    {
+        cout << "Please Enter Only Positive Number \n";
+        cin >> Number;
+    }
+    return Number;
+}
+
+enum OddOrEven {Odd =1 , Even = 2};
+
+OddOrEven CheckOddOorEven(int number)
+{
+    if (number % 2 != 0) return OddOrEven::Odd;
+    else return OddOrEven::Even;
+}
+void Printfrom1toN(int number)
+{
+    int sum = 0; 
+    cout << " using for \n";
+    for (int i = 1; i <=number; i++)
+    {
+
+        if (CheckOddOorEven(i)==OddOrEven::Even)
+        {
+             sum += i ;
+        }
+    }
+    cout << "Total Is : " << sum;
+}
+
+void Printfrom1toNDowhile(int number)
+{
+    int sum = 0;
+    cout << "\nusing do while  \n";
+    int i = 1; 
+    do
+    {
+        if (CheckOddOorEven(i) == OddOrEven::Even)
+        {
+            sum += i;
+        }
+        i ++;
+       
+    } while (i <= number);
+
+    cout << sum;
+}
+
+void Printwithwhile(int number)
+{
+    int sum = 0;
+    cout << "\n using while  \n";
+    int i = 1; 
+    while (i <=number)
+    {
+        if (CheckOddOorEven(i) == OddOrEven::Even)
+        {
+            sum += i;
+        };
+        i++;
+        
+    }
+    cout << sum;
+}
+
+
+
+int main()
+
+{
+    int n = ReadPositiveNumber();
+
+    Printfrom1toN(n);
+    Printfrom1toNDowhile(n);
+    Printwithwhile(n);
+
+
+    
+
+
+ 
+
+   
+
+    return 0;
+   
+}
+
+
