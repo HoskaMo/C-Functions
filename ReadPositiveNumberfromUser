@@ -10,3 +10,18 @@ int ReadPositiveNumber()
     }
     return Number;
 }
+
+
+with Message entered 
+int ReadPositiveNumber(string Message)
+{
+    int Number;
+    cout << " Please Enter Positive Number \n";
+    cin >> Number;
+    while (Number < 0)
+    {
+        cout << Message << "\n";
+        cin >> Number;
+    }
+    return Number;
+}
