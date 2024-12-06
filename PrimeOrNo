@@ -1,0 +1,15 @@
+enPrimeOrNotPrime CheckNumber(int Number)
+{
+    int Half = round(Number / 2);
+
+    for (int i = 2; i <=Half; i++)
+    {
+        if (Number % i == 0)
+        {
+            return enPrimeOrNotPrime::NotPrime;
+        }
+         
+    }
+     return enPrimeOrNotPrime::Prime;
+
+}
