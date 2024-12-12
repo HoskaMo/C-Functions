@@ -1,0 +1,15 @@
+bool PerfetcNumber(int Number)
+{
+     
+        int sum = 0;
+        for (int i = 1; i < Number; i++)
+        {
+            if (Number % i == 0)
+            {
+                sum += i;
+            }
+        }
+        return Number == sum;
+
+ 
+}
