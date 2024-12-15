@@ -1,0 +1,11 @@
+void InvertedPattern(int Number)
+{
+    for (int i = Number; i >= 1; i -- )
+    {
+        for (int x = 1; x <= i; x++)
+        {
+            cout << i ;
+        }
+        cout << endl;
+    }
+}
