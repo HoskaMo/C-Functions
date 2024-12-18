@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <iomanip>
+
+using namespace std;
+
+
+string Name()
+{
+    string Text = "";
+    cout << "PLease enter the Password\n";
+    getline(cin, Text);
+    return Text;
+}
+
+
+string Encrypted(string Text, int EncryptionCode)
+{
+    for (int i = 0; i <= Text.length(); i++)
+    {
+        Text[i] = char((int)Text[i] + EncryptionCode);
+    }
+    return Text;
+
+}
+
+
+string DeCrypt(string Text, int EncryptionCode)
+{
+    for (int i = 0; i <= Text.length(); i++)
+    {
+        Text[i] = char((int)Text[i] - EncryptionCode);
+    }
+    return Text;
+}
