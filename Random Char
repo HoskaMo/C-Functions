@@ -1,0 +1,23 @@
+char GetRandomChar(enRandom CharType)
+{
+
+
+	switch (CharType)
+	{
+	case enRandom::SmallLetter: 
+		return char(RandomNumber(97, 122));
+		break;
+	case enRandom::Capitalletter: 
+		return char(RandomNumber(65, 90));
+		break; 
+	case enRandom::SpecialCh:
+		return char(RandomNumber(33, 47));
+		break;
+	case enRandom::Digit:
+		return (RandomNumber(48, 57));
+		break;
+	default:
+		break;
+	}
+
+}
