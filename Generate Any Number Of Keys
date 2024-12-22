@@ -1,0 +1,107 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <iomanip>
+#include <cstdlib>
+
+using namespace std;
+enum enCharType { CapitalLetter = 1 , SmallLetter = 2 , SpecialChar = 3 , Digit = 4  };
+
+int ReadPositiveNumber(string Message)
+{
+    int Number;
+    cout << " Please Enter Positive Number \n";
+    cin >> Number;
+    while (Number < 0)
+    {
+        cout << Message << "\n";
+        cin >> Number;
+    }
+    return Number;
+}
+
+
+int RandomNumber(int from, int to)
+{
+	int randomNumber = rand() % (to - from + 1) + from;
+	return randomNumber;
+}
+
+
+char GetRandomChar(enCharType CharType)
+{
+
+
+	switch (CharType)
+	{
+	case enCharType::SmallLetter:
+		return char(RandomNumber(97, 122));
+		break;
+	case enCharType::CapitalLetter:
+		return char(RandomNumber(65, 90));
+		break;
+	case enCharType::SpecialChar:
+		return char(RandomNumber(33, 47));
+		break;
+	case enCharType::Digit:
+		return (RandomNumber(48, 57));
+		break;
+	default:
+		break;
+	}
+
+}
+
+string GenerateWord(enCharType CharType, short Length)
+{
+	string word;  
+
+	for (int i = 1; i <= Length; i++)
+	{
+		word = word + GetRandomChar(CharType);
+	}
+	return word; 
+}
+
+string GenerateKey()
+{
+	string Key = "";
+
+	Key = GenerateWord(enCharType::CapitalLetter, 4) + "-";
+	Key = Key + GenerateWord(enCharType::CapitalLetter, 4) + "-"; 
+	Key = Key + GenerateWord(enCharType::CapitalLetter, 4) + "-";
+	Key = Key + GenerateWord(enCharType::CapitalLetter, 4) ;
+
+	return Key;
+}
+
+void GenerateKey(short NumberOfKey)
+{
+	for (int i = 1; i <= NumberOfKey; i++)
+	{
+		cout << "Key [" << i << "]" << " :";
+		cout << GenerateKey() << endl;
+	}
+}
+
+
+int main()
+
+{
+
+    srand((unsigned)time(NULL));
+
+	GenerateKey(ReadPositiveNumber("How Many Keys you want to generate \n"));
+    
+
+
+	
+
+
+
+	
+    return 0;
+   
+}
+
+
