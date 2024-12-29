@@ -1,0 +1,126 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <iomanip>
+#include <cstdlib>
+
+using namespace std;
+
+enum enPrimeOrNotPrime {Prime = 1 , NotPrime = 2 };
+
+enPrimeOrNotPrime CheckNumber(int Number)
+{
+    int Half = round(Number / 2);
+
+    for (int i = 2; i <= Half; i++)
+    {
+        if (Number % i == 0)
+        {
+            return enPrimeOrNotPrime::NotPrime;
+        }
+
+    }
+    return enPrimeOrNotPrime::Prime;
+}
+
+int ReadPositiveNumber(string Message)
+{
+    int Number;
+    cout << Message;
+    cin >> Number;
+    while (Number < 0)
+    {
+        cout << Message << "\n";
+        cin >> Number;
+    }
+    return Number;
+}
+
+int RandomNumber(int from, int to)
+{
+    int randomNumber = rand() % (to - from + 1) + from;
+    return randomNumber;
+}
+
+void ArrayRandom(int arr[100] , int arrayLength)
+{
+
+    for (int i = 0; i < arrayLength; i++)
+    {
+        arr[i] = RandomNumber(1, 100);
+    }
+
+}
+
+void PrintArray(int arr[100], int arrayLength)
+{
+  
+    for (int i = 0; i < arrayLength; i++)
+    {
+        cout << arr[i] << " ";
+    }
+}
+
+void CopyArray(int arrsource[100], int arrdestination[100], int arrayLength)
+{
+    for (int i = 0; i < arrayLength; i++)
+    {
+        arrdestination[i] = arrsource[i];
+  
+    } 
+}
+
+void CopyPrimeNumberinArray(int arrsource[100], int arrdestination[100], int arrsourceLength, int& arrDestinationLength)
+{
+    int counter = 0; 
+
+    for (int i = 0; i < arrsourceLength; i++)
+    {
+        if (CheckNumber(arrsource[i]) == enPrimeOrNotPrime::Prime)
+        {
+            arrdestination[counter] = arrsource[i]; 
+            counter++;
+        }
+    }
+
+    arrDestinationLength = counter; 
+}
+
+
+
+int main()
+
+{
+    
+    srand((unsigned)time(NULL));
+
+    int  arrayLength = ReadPositiveNumber("PLease enter array length \n");
+    
+    int arr[100];
+    
+    
+    ArrayRandom(arr , arrayLength);
+    
+    cout << "\nArray 1 Elements:\n";
+    PrintArray(arr, arrayLength);
+    cout << endl;
+
+   // CopyArray(arr, arr2, arrayLength);
+    int arr2[100];
+    int arr2Length = 0;
+
+    cout << "\nArray 2 Elements:";
+    CopyPrimeNumberinArray(arr, arr2, arrayLength, arr2Length);
+    cout << endl;
+
+
+    PrintArray(arr2, arr2Length);
+    
+   
+
+   
+    return 0;
+   
+}
+
+
