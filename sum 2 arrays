@@ -1,0 +1,101 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <iomanip>
+#include <cstdlib>
+
+using namespace std;
+
+
+
+int ReadPositiveNumber(string Message)
+{
+    int Number;
+    cout << Message;
+    cin >> Number;
+    while (Number < 0)
+    {
+        cout << Message << "\n";
+        cin >> Number;
+    }
+    return Number;
+}
+
+int RandomNumber(int from, int to)
+{
+    int randomNumber = rand() % (to - from + 1) + from;
+    return randomNumber;
+}
+
+void ArrayRandom(int arr[100] , int arrayLength)
+{
+
+    for (int i = 0; i < arrayLength; i++)
+    {
+        arr[i] = RandomNumber(1, 100);
+    }
+
+}
+
+void PrintArray(int arr[100], int arrayLength)
+{
+  
+    for (int i = 0; i < arrayLength; i++)
+    {
+        cout << arr[i] << " ";
+    }
+}
+
+//void CopyArray(int arrsource[100], int arrdestination[100], int arrayLength)
+//{
+//    for (int i = 0; i < arrayLength; i++)
+//    {
+//        arrdestination[i] = arrsource[i];
+//  
+//    } 
+//}
+
+void SumArrays(int arr1[100], int arr2[100], int arraySum[100], int arrayLength)
+{
+    for (int i = 0; i < arrayLength; i++)
+    {
+        arraySum[i] = arr1[i] + arr2[i];
+    }
+}
+
+
+
+
+int main()
+
+{
+    
+    srand((unsigned)time(NULL));
+
+    int arr[100], arr2[100], arr3[100];
+    int  arrayLength = ReadPositiveNumber("PLease enter array length \n");
+
+    ArrayRandom(arr , arrayLength);
+    cout << "\nArray 1 Elements:\n";
+
+    PrintArray(arr, arrayLength);
+    cout << endl;
+
+    ArrayRandom(arr2, arrayLength);
+    cout << "\nArray 2 Elements:\n";
+    PrintArray(arr2, arrayLength);
+
+    SumArrays(arr, arr2, arr3, arrayLength);
+    cout << "\n\nSum of array1 and array 2: \n";
+    PrintArray(arr3, arrayLength);
+
+    
+    
+   
+
+   
+    return 0;
+   
+}
+
+
