@@ -1,0 +1,113 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <iomanip>
+#include <cstdlib>
+
+using namespace std;
+
+enum enCharType { CapitalLetter = 1, SmallLetter = 2, SpecialChar = 3, Digit = 4 };
+
+
+int ReadPositiveNumber(string Message)
+{
+    int Number;
+    cout << Message;
+    cin >> Number;
+    while (Number < 0)
+    {
+        cout << Message << "\n";
+        cin >> Number;
+    }
+    return Number;
+}
+
+int RandomNumber(int from, int to)
+{
+    int randomNumber = rand() % (to - from + 1) + from;
+    return randomNumber;
+}
+
+int readnumber()
+{
+    int Number = 0; 
+    cout << "What is to search for \n";
+    cin >> Number;
+    return Number;
+}
+
+void ArrayRandom(int arr[100], int arrayLength)
+{
+
+    for (int i = 0; i < arrayLength; i++) 
+    {
+        arr[i] = RandomNumber(1, 100);  
+    }
+
+} 
+
+void PrintArray(int arr[100], int arrayLength)
+{
+    cout << "Array Elemets :\n"; 
+    for (int i = 0; i < arrayLength; i++)
+    {
+        cout << arr[i] << " ";
+    }
+}
+
+short FindNumberinPosition(int Numbertosearch , int arr[100], int arrayLength )
+{
+    for (int i = 0; i < arrayLength; i++)
+    {
+        if (arr[i] == Numbertosearch)
+        {
+            return i; 
+        }
+    }
+    return -1; 
+}
+
+bool IsTheNumberInArray(int Numbertosearch, int arr[100], int arrayLength)
+{
+    return (FindNumberinPosition(Numbertosearch, arr, arrayLength)) != -1;
+}
+
+
+int main()
+
+{   
+
+	
+    srand((unsigned)time(NULL));
+
+	int arr[100]; 
+    int arraylength = ReadPositiveNumber("How Many Numbers you want \n");
+    
+	
+
+    ArrayRandom(arr, arraylength);
+    PrintArray(arr, arraylength);
+    cout << endl;
+
+    int Number = readnumber();
+    cout << "Number you are looking is :" << Number << endl;;
+    short Numberinposition = FindNumberinPosition(Number, arr, arraylength);
+     
+    if (!(IsTheNumberInArray(Number, arr, arraylength)))
+    {
+        cout << " The Number is not found  \n";
+    }
+    else
+
+        cout << "Yes The Number is Found :"  << endl;
+    
+  
+    
+
+    
+
+    return 0;
+   
+}
+
+
