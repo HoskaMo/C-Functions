@@ -1,0 +1,18 @@
+void AddArrayElement(int Number, int arr[100], int& arrayLength)
+{
+    arrayLength++;
+    arr[arrayLength - 1] = Number;
+}
+
+void InputsUerNumberInArray(int arr[100], int& arrayLength)
+{
+    bool Addmore; 
+
+    do
+    {
+        AddArrayElement(readnumber(), arr, arrayLength);
+        cout << "Do You Want To Add New Element [0]NO [1]Yes :\n";
+        cin >> Addmore;
+
+    } while (Addmore);
+}
