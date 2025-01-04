@@ -1,0 +1,12 @@
+bool CheckArrayisPalindrome( int arr[100] , int arr1length)
+{
+    for (int i = 0; i < arr1length; i++)
+    {
+        if (arr[i] != arr[arr1length - i - 1]);
+        {
+            return false;
+        }
+    };
+    return true; 
+    
+}
